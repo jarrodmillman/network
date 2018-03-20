@@ -13,10 +13,11 @@ about_person = about_person.rename(columns=column_mapper)
 respondent_idx = (about_person == 'It\'s me').values.argmax(axis=1)
 respondents = about_person.columns[respondent_idx]
 
-N = len(about_person.columns)
-M = len(respondents)
+about_person = about_person[respondents]
+
+N = len(respondents)
 fields = ('Collaborate', 'Personally communicate', 'Don\'t know them')
-graphs = np.zeros((M, N, len(fields)))
+graphs = np.zeros((N, N, len(fields)))
 
 print('Row labels:', respondents)
 print('Column labels:', about_person.columns)
@@ -30,6 +31,9 @@ for n, person in enumerate(about_person):
             if (field in response):
                 graphs[r, n, f] = 1
 
+np.savez('graph.npz', adjacencies=graphs, fields=fields, people=respondents,
+                      row_label='Respondent', column_label='Participant')
+
 import matplotlib.pyplot as plt
 f, axes = plt.subplots(1, len(fields))
 for f, field in enumerate(fields):
@@ -37,7 +41,9 @@ for f, field in enumerate(fields):
     axes[f].set_title(field)
     axes[f].set_xticks(np.arange(N))
     axes[f].set_xticklabels(about_person.columns, rotation=45, horizontalalignment='right')
-    axes[f].set_yticks(np.arange(M))
+    axes[f].set_xlabel('Participant')
+    axes[f].set_yticks(np.arange(N))
     axes[f].set_yticklabels(respondents, rotation=45, horizontalalignment='right')
+    axes[f].set_ylabel('Response by')
 
 plt.show()
