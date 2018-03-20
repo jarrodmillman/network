@@ -1,3 +1,7 @@
+# Data files
+*.npz
+data
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -5,6 +9,11 @@ __pycache__/
 
 # C extensions
 *.so
+
+# Backup files
+\.*
+\#*
+*~
 
 # Distribution / packaging
 .Python
