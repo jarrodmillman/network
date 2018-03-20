@@ -11,6 +11,22 @@ people = df[[column for column in df.columns if column.startswith('How do you kn
 people = people.rename(columns=column_mapper)
 
 N = len(people.columns)
-collaborations = np.zeros((N, N))
+fields = ('Collaborate', 'Personally communicate', 'Don\'t know them')
+collaborations = np.zeros((N, N, len(fields)))
+
+respondent_idx = (people == 'It\'s me').values.argmax(axis=1)
+respondents = people.columns[respondent_idx]
+print('respondents:', respondents)
+
+for person in people:
+    print(f'person == {person}')
+    responses = people[person]
+
+#    if (person_idx == 0) and (person != 'Jarrod Millman'):
+#        person_idx = -1
+
+    for (index, field) in enumerate(fields):
+        for response in responses:
+            pass
 
 print(collaborations.shape)
