@@ -16,8 +16,19 @@ def load():
     people : array of strings
         Graph nodes (participants).
 
+    Examples
+    --------
+    >>> adjacencies, fields, people = load()
+    >>> print(fields[0], ':')
+    Collaborate :
+    >>> print(adjacencies[:5, :5, 0])
+    [[0. 0. 0. 0. 0.]
+     [1. 0. 0. 0. 0.]
+     [0. 0. 0. 0. 0.]
+     [1. 1. 0. 0. 0.]
+     [0. 0. 0. 0. 0.]]
     """
-    data = np.load('graph.npz')
+    data = np.load('data/graph.npz')
     fields = ('adjacencies', 'fields', 'people')
 
     return [data[field] for field in fields]
@@ -27,4 +38,4 @@ if __name__ == "__main__":
     adjacencies, fields, people = load()
 
     print(fields[0], ':')
-    print(adjacencies[:,:, 0])
+    print(adjacencies[:, :, 0])

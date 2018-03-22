@@ -2,10 +2,12 @@ import pandas as pd
 import re
 import numpy as np
 
-df = pd.read_csv('data/Preworkshop questionaire.csv')
+df = pd.read_csv('questionaire.csv')
+
 
 def column_mapper(column):
     return re.search('\[(.*)\]', column).group(1)
+
 
 about_person = df[[column for column in df.columns if column.startswith('How do you know')]]
 about_person = about_person.rename(columns=column_mapper)
@@ -16,7 +18,13 @@ respondents = about_person.columns[respondent_idx]
 about_person = about_person[respondents]
 
 N = len(respondents)
-fields = ('Collaborate', 'Personally communicate', 'Don\'t know them')
+fields = ('Collaborate',
+          'Personally communicate',
+          'Use their software',
+          'Use their data',
+          'Use their algorithm',
+          'Familiar with their work',
+          'Don\'t know them')
 graphs = np.zeros((N, N, len(fields)))
 
 print('Row labels:', respondents)
@@ -32,18 +40,4 @@ for n, person in enumerate(about_person):
                 graphs[r, n, f] = 1
 
 np.savez('graph.npz', adjacencies=graphs, fields=fields, people=respondents,
-                      row_label='Respondent', column_label='Participant')
-
-import matplotlib.pyplot as plt
-f, axes = plt.subplots(1, len(fields))
-for f, field in enumerate(fields):
-    axes[f].imshow(graphs[..., f], cmap='gray', vmin=0, vmax=1)
-    axes[f].set_title(field)
-    axes[f].set_xticks(np.arange(N))
-    axes[f].set_xticklabels(about_person.columns, rotation=45, horizontalalignment='right')
-    axes[f].set_xlabel('Participant')
-    axes[f].set_yticks(np.arange(N))
-    axes[f].set_yticklabels(respondents, rotation=45, horizontalalignment='right')
-    axes[f].set_ylabel('Response by')
-
-plt.show()
+         row_label='Respondent', column_label='Participant')
