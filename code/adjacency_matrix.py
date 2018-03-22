@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 import math
 import matplotlib.pyplot as plt
@@ -28,4 +29,7 @@ for f, field in enumerate(fields):
 if len(fields) < len(axes):
     axes[-1].axis('off')
 
-plt.show()
+if sys.argv[-1] == '-w':
+    plt.savefig('../slides/figs/adjacency.png')
+else:
+    plt.show()

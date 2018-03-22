@@ -23,11 +23,11 @@ about_person = about_person[respondents]
 N = len(respondents)
 fields = ('Collaborate',
           'Personally communicate',
+          'Familiar with their work',
+          'Don\'t know them',
           'Use their software',
           'Use their data',
-          'Use their algorithm',
-          'Familiar with their work',
-          'Don\'t know them')
+          'Use their algorithm')
 graphs = np.zeros((N, N, len(fields)))
 
 print('Row labels:', respondents)

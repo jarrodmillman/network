@@ -28,7 +28,7 @@ def load():
      [1. 1. 0. 0. 0.]
      [0. 0. 0. 0. 0.]]
     """
-    data = np.load('data/graph.npz')
+    data = np.load('../data/graph.npz')
     fields = ('adjacencies', 'fields', 'people')
 
     return [data[field] for field in fields]

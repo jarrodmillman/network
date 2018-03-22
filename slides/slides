@@ -1,0 +1,71 @@
+---
+title: Graphs and Complex Networks Across Domains
+subtitle: GraphXD Workshop 2018
+author: Jarrod Millman \newline
+  \small Graduate Student, Biostatistics \newline
+  \small Fellow, Berkeley Institute for Data Science
+date: \small March 27, 2018
+header-includes:
+    - \usepackage{amsthm}
+    - \usepackage{subfigure}
+    - \usepackage{tikz}
+    - \usetikzlibrary{fit,positioning}
+    - \newcommand{\ind}{\stackrel{\mathrm{ind}}{\sim}}
+    - \newcommand{\iid}{\stackrel{\mathrm{iid}}{\sim}}
+    - \newcommand{\reals}{\mathbb{R}}
+    - \newcommand{\N}[2]{\mathcal{N}\left(#1,#2\right)}
+    - \usefonttheme{professionalfonts}
+    - \usepackage{fontspec}
+    - \setsansfont[BoldFont = {Fira Sans Medium}]{Fira Sans}
+    - \setmonofont{Fira Mono}
+---
+
+# What is a graph?
+
+A graph (or network) is a set of **vertices** connected by **edges**.
+
+\begin{center}
+\includegraphics[width=.4\textwidth]{figs/graph.png}
+\end{center}
+
+Formally, the graph $G$ is an ordered pair $(V, E)$ where
+
+- $V = \{1, 2, 3, 4, 5\}$
+- $E = \{\{1, 2\}, \{1, 3\}, \{1, 5\}, \{2, 3\}, \{3, 4\}, \{4, 5\}\}$
+
+# Nodal data
+
+\begin{center}
+\includegraphics[width=1\textwidth]{figs/describes_you.png}
+\end{center}
+
+# Nodal data
+
+\begin{center}
+\includegraphics[width=1\textwidth]{figs/how_often.png}
+\end{center}
+
+# Nodal data
+
+\begin{center}
+\includegraphics[width=1\textwidth]{figs/work_in.png}
+\end{center}
+
+# Adjacency matrices
+
+\begin{center}
+\includegraphics[width=1\textwidth]{figs/adjacency.png}
+\end{center}
+
+
+# Looking ahead
+
+- Invited talks
+- Discussion
+- Draft proposal / vision
+- Coding sprints
+- Blog posts
+
+---
+
+\centering {\huge Discussion}

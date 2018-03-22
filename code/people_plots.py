@@ -1,15 +1,19 @@
+import sys
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv('data/questionaire.csv')
+df = pd.read_csv('../data/questionaire.csv')
 
 # What best describes you?
 question = 'What best describes you?'
 df[question].value_counts().plot(kind='bar')
 plt.title(question)
-plt.show()
+if sys.argv[-1] == '-w':
+    plt.savefig('../slides/figs/describes_you.png')
+else:
+    plt.show()
 
 
 # I do work in (check all that apply):
@@ -32,7 +36,10 @@ for response in df[question]:
 plt.bar(range(len(D)), list(D.values()), align='center')
 plt.xticks(range(len(D)), list(D.keys()))
 plt.title(question)
-plt.show()
+if sys.argv[-1] == '-w':
+    plt.savefig('../slides/figs/work_in.png')
+else:
+    plt.show()
 
 
 # How often do you?
@@ -55,4 +62,8 @@ for k, v in activities.items():
         'Often': sum(s == 'Often')})
 
 how_often.plot.bar()
-plt.show()
+plt.title('How often do you?')
+if sys.argv[-1] == '-w':
+    plt.savefig('../slides/figs/how_often.png')
+else:
+    plt.show()
