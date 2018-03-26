@@ -171,8 +171,8 @@ Edges
     - Attributes
     
         - What best describes you?
-        - How often do you?
         - I work in ...
+        - How often do you?
 
 - Edges
 
@@ -188,11 +188,16 @@ Edges
 
 \centering {\huge Vertices}
 
-
 # What best describes you?
 
 \begin{center}
-\includegraphics[width=1\textwidth]{figs/describes_you.png}
+\includegraphics[width=\textwidth]{figs/describes_you.png}
+\end{center}
+
+# I work in ...
+
+\begin{center}
+\includegraphics[width=\textwidth]{figs/work_in.png}
 \end{center}
 
 # How often do you?
@@ -201,11 +206,6 @@ Edges
 \includegraphics[width=1\textwidth]{figs/how_often.png}
 \end{center}
 
-# I work in ...
-
-\begin{center}
-\includegraphics[width=1\textwidth]{figs/work_in.png}
-\end{center}
 
 ---
 
@@ -214,54 +214,44 @@ Edges
 # Adjacency matrices
 
 \begin{center}
-\includegraphics[width=1\textwidth]{figs/adjacency.png}
-\end{center}
-
-# Adjacency matrices
-
-\begin{center}
 \includegraphics[width=1\textwidth]{figs/adjacency1.png}
 \end{center}
 
-# Collaborate ($n = 23, m = 31$)
+# Collaborate ($n = 25, m = 33$)
 
 \begin{center}
-\includegraphics[width=.8\textwidth]{figs/collaborate.png}
+\includegraphics[height=.7\textheight]{figs/collaborate.png}
 \end{center}
 
-| Average degree:   2.6957
-| Density: 0.1225296442687747
-| Degrees: [8, 8, 7, 7, 7, 5, 4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+| Density: **0.11**
+| Average degree:   2.6
 
-# Familiar with their work ($n = 23, m = 60$)
+# Personally communicate ($n = 25, m = 68$)
 
 \begin{center}
-\includegraphics[width=.8\textwidth]{figs/familiar.png}
+\includegraphics[height=.7\textheight]{figs/communicate.png}
 \end{center}
 
-| Average degree:   5.2174
-| Density: 0.23715415019762845
-| Degrees: [15, 11, 11, 9, 8, 7, 7, 7, 7, 6, 6, 5, 4, 3, 3, 3, 3, 2, 1, 1, 1, 0, 0]
+| Density: **0.23**
+| Average degree:   5.4
 
-# Personally communicate ($n = 23, m = 61$)
+# Familiar with their work ($n = 25, m = 70$)
 
 \begin{center}
-\includegraphics[width=.8\textwidth]{figs/communicate.png}
+\includegraphics[height=.7\textheight]{figs/familiar.png}
 \end{center}
 
-| Average degree:   5.3043
-| Density: 0.24110671936758893
-| Degrees: [16, 11, 10, 10, 9, 9, 8, 8, 6, 6, 5, 5, 4, 3, 2, 2, 2, 2, 1, 1, 1, 1, 0]
+| Density: **0.23**
+| Average degree:   5.6
 
-# Don't know them ($n = 23, m = 190$)
+# Don't know them ($n = 25, m = 232$)
 
 \begin{center}
-\includegraphics[width=.8\textwidth]{figs/dontknow.png}
+\includegraphics[height=.7\textheight]{figs/dontknow.png}
 \end{center}
 
-| Average degree:  16.5217
-| Density: 0.7509881422924901
-| [22, 21, 21, 21, 21, 20, 20, 20, 19, 19, 18, 17, 16, 15, 14, 14, 14, 13, 13, 13, 11, 10, 8]
+| Density: **0.77**
+| Average degree:  18.6
 
 ---
 

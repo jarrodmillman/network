@@ -1,6 +1,18 @@
 import numpy as np
 
 
+node_options = {
+    'node_color': 'royalblue',
+    'node_size': 50,
+    'edgecolors': 'white',
+}
+
+edge_options = {
+    'line_color': 'grey',
+    'alpha': 0.7,
+}
+
+
 def load():
     """Load respondent adjacency graphs from disk.
 
