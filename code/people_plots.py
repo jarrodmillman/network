@@ -10,7 +10,7 @@ df = pd.read_csv('../data/questionaire.csv')
 
 # What best describes you?
 question = 'What best describes you?'
-df[question][18] = 'Other'  # I am a frankenstein of appointments.
+df[question][17] = 'Other'  # I am a frankenstein of appointments.
 plt.figure(figsize=(8, 3))
 df[question].value_counts().plot(kind='bar', rot=0)
 #cnt = df[question].value_counts()

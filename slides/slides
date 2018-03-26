@@ -136,12 +136,10 @@ Vertices
 \begin{itemize}
 \item People
 \item Animals
-\item Genes
-\item Proteins
-\item Brain regions
-\item Cities
-\item Ports
 \item Ancestors
+\item Cities
+\item Genes
+\item Brain regions
 \item Random variables
 \item Etc.
 \end{itemize}
@@ -153,10 +151,11 @@ Edges
 \begin{itemize}
 \item Interactions
 \item Cooccurrence
-\item Similarity
+\item Expert knowledge
 \item Correlation
 \item Conditional independence
 \item Causality
+\item Etc.
 \end{itemize}
 
 \end{columns}
@@ -167,7 +166,7 @@ Edges
 
 # Pre-workshop Questionnaire
 
-- Vertices (survey respondents)
+- Vertices (25 respondents out of 30)
     - Attributes
     
         - What best describes you?
@@ -211,7 +210,7 @@ Edges
 
 \centering {\huge Edges}
 
-# Adjacency matrices
+# Adjacency matrices (respondent $\times$ participant)
 
 \begin{center}
 \includegraphics[width=1\textwidth]{figs/adjacency1.png}
@@ -223,7 +222,7 @@ Edges
 \includegraphics[height=.7\textheight]{figs/collaborate.png}
 \end{center}
 
-| Density: **0.11**
+| Density: 0.11
 | Average degree:   2.6
 
 # Personally communicate ($n = 25, m = 68$)
@@ -232,7 +231,7 @@ Edges
 \includegraphics[height=.7\textheight]{figs/communicate.png}
 \end{center}
 
-| Density: **0.23**
+| Density: 0.23
 | Average degree:   5.4
 
 # Familiar with their work ($n = 25, m = 70$)
@@ -241,7 +240,7 @@ Edges
 \includegraphics[height=.7\textheight]{figs/familiar.png}
 \end{center}
 
-| Density: **0.23**
+| Density: 0.23
 | Average degree:   5.6
 
 # Don't know them ($n = 25, m = 232$)
@@ -250,7 +249,7 @@ Edges
 \includegraphics[height=.7\textheight]{figs/dontknow.png}
 \end{center}
 
-| Density: **0.77**
+| Density: 0.77
 | Average degree:  18.6
 
 ---
@@ -261,7 +260,7 @@ Edges
 # Thresholded correlation
 
 \begin{center}
-\includegraphics[width=\textwidth]{figs/infer_edge1.png}
+\includegraphics[width=\textwidth]{figs/infer_edges.png}
 \end{center}
 
 ---
