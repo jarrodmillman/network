@@ -187,17 +187,12 @@ Edges
 
 \centering {\huge Vertices}
 
-# What best describes you?
-
-\begin{center}
-\includegraphics[width=\textwidth]{figs/describes_you.png}
-\end{center}
-
-# I work in ...
+# Who are we?
 
 \begin{center}
 \includegraphics[width=\textwidth]{figs/work_in.png}
 \end{center}
+
 
 # How often do you?
 
@@ -265,7 +260,7 @@ Edges
 
 ---
 
-\centering {\huge How did we do?}
+\centering {\huge How well did we do?}
 
 # Actual
 
@@ -293,11 +288,12 @@ Edges
 
 # Thanks
 
+- Stacey Dorton
+- Jessica Zosa Forde
 - Aaron Schild 
 - Stéfan van der Walt
 - Nelle Varoquaux 
-- Jessica Zosa Forde
-- Stacey Dorton
+- and the whole BIDS community ...
 
 ---
 

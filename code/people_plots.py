@@ -37,7 +37,7 @@ for x, y in zip(x_data, y_data):
 ax.spines["right"].set_linewidth(0)
 ax.spines["top"].set_linewidth(0)
 ax.spines["left"].set_linewidth(0)
-ax.set_title("Jarrod, please fix me", fontweight="bold")
+ax.set_title("What best describes you?", fontweight="bold")
 
 ax = axes[1]
 # I do work in (check all that apply):
@@ -81,7 +81,7 @@ if sys.argv[-1] == '-w':
     plt.savefig('../slides/figs/work_in.png')
     plt.close()
 else:
-    plt.title("I do work in…", fontweight="bold")
+    plt.title("I work in…", fontweight="bold")
     plt.show()
 
 

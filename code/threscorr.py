@@ -67,7 +67,7 @@ plt.savefig('../slides/figs/inferred_graph.png')
 
 plt.clf()
 plt.close()
-plt.hist(corr)
+plt.hist(np.ravel(corr), bins=20)
 plt.savefig('../slides/figs/hi.png')
 
 plt.clf()
