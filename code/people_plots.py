@@ -11,19 +11,35 @@ df = pd.read_csv('../data/questionaire.csv')
 # What best describes you?
 question = 'What best describes you?'
 df[question][17] = 'Other'  # I am a frankenstein of appointments.
-plt.figure(figsize=(8, 3))
-df[question].value_counts().plot(kind='bar', rot=0)
-#cnt = df[question].value_counts()
-#plt.figure(figsize=(10, 5))
-#plt.bar(cnt.index, cnt.values)
-if sys.argv[-1] == '-w':
-    plt.savefig('../slides/figs/describes_you.png')
-    plt.close()
-else:
-    plt.title(question)
-    plt.show()
 
+fig, axes = plt.subplots(figsize=(12, 6), nrows=2, tight_layout=True,
+    gridspec_kw={"hspace": 0.4})
+ax = axes[0]
 
+data = df[question].value_counts()
+ax.bar(np.arange(len(data)), data, color="0")
+xlabels = data.index
+x_data, y_data = np.arange(len(data)), data
+
+ax.bar(x_data, y_data, align='center', color="0")
+ax.set_xticks(np.arange(len(xlabels)))
+ax.set_xticklabels(
+    xlabels,
+    fontweight="bold")
+ax.set_ylim(0, max(y_data) + 2)
+
+ax.set_yticks([])
+for x, y in zip(x_data, y_data):
+    ax.text(x, y-0.95, '%d' % y, ha='center', va= 'bottom', fontweight="bold",
+            color="1")
+
+# hacky way of putting less tick labels
+ax.spines["right"].set_linewidth(0)
+ax.spines["top"].set_linewidth(0)
+ax.spines["left"].set_linewidth(0)
+ax.set_title("Jarrod, please fix me", fontweight="bold")
+
+ax = axes[1]
 # I do work in (check all that apply):
 question = 'I do work in (check all that apply):'
 fields = ('Humanities',
@@ -42,14 +58,30 @@ for response in df[question]:
             D[field] += 1
 
 #plt.rc('text', usetex=True)
-plt.figure(figsize=(10, 3))
-plt.bar(range(len(D)), list(D.values()), align='center')
-plt.xticks(range(len(D)), [k.replace(' ', ' \n ') for k in D.keys()], fontsize="small")
+x_data, y_data = np.arange(len(D)), list(D.values())
+ax.bar(x_data, y_data, align='center', color="0")
+xlabels = [k.replace(' ', '\n') for k in D.keys()]
+ax.set_xticks(np.arange(len(xlabels)))
+ax.set_xticklabels(
+    xlabels, #fontsize="small",
+    fontweight="bold")
+
+ax.set_yticks([])
+for x, y in zip(x_data, y_data):
+    ax.text(x, y-1.15, '%d' % y, ha='center', va= 'bottom', fontweight="bold",
+            color="1")
+
+# hacky way of putting less tick labels
+ax.spines["right"].set_linewidth(0)
+ax.spines["top"].set_linewidth(0)
+ax.spines["left"].set_linewidth(0)
+ax.set_ylim(0, max(y_data) + 2)
+
 if sys.argv[-1] == '-w':
     plt.savefig('../slides/figs/work_in.png')
     plt.close()
 else:
-    plt.title(question)
+    plt.title("I do work in…", fontweight="bold")
     plt.show()
 
 
