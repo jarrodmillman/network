@@ -1,3 +1,12 @@
+*.aux
+*.log
+*.nav
+*.out
+*.tex
+*.snm
+*.toc
+tmp
+
 # Data files
 *.npz
 data

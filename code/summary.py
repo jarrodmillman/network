@@ -12,4 +12,10 @@ for which, field in enumerate(fields):
     # print summary information
     print('-' * 50)
     print(nx.info(G))
+    #print("radius: %d" % nx.radius(G))
+    #print("diameter: %d" % nx.diameter(G))
+    #print("eccentricity: %s" % nx.eccentricity(G))
+    #print("center: %s" % nx.center(G))
+    #print("periphery: %s" % nx.periphery(G))
+    print("density: %s" % nx.density(G))
     print()

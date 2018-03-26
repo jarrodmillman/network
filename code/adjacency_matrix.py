@@ -11,6 +11,8 @@ N = len(people)
 
 import matplotlib.pyplot as plt
 
+fields = np.delete(fields, 3)
+adjacencies = np.delete(adjacencies, 3, 2)
 f, axes = plt.subplots(2, math.ceil(len(fields) / 2),
                        figsize=(12, 6), sharey=True,
                        sharex=True)

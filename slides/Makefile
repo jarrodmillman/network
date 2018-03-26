@@ -1,3 +1,5 @@
+all: clean slides.pdf
+
 clean:
 	-rm -f slides.{aux,log,nav,out,pdf,snm,tex,toc}
 

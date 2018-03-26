@@ -1,3 +1,5 @@
+import sys
+
 import matplotlib.pyplot as plt
 import networkx as nx
 from utils import load
@@ -14,11 +16,12 @@ G.remove_nodes_from(remove)
 
 # draw graph
 pos = nx.circular_layout(G)
-nx.draw_networkx_nodes(G, pos, node_size=20)
+nx.draw_networkx_nodes(G, pos, node_size=20, with_labels=True)
 nx.draw_networkx_edges(G, pos, alpha=0.4)
-labels = dict((n, d['name']) for n,d in G.nodes(data=True))
-nx.draw_networkx_labels(G, pos, labels=labels)
+#labels = dict((n, d['name']) for n,d in G.nodes(data=True))
+#nx.draw_networkx_labels(G, pos, labels=labels)
 
 plt.title(fields[which])
 plt.axis('off')
+
 plt.show()

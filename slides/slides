@@ -1,9 +1,10 @@
 ---
 title: Graphs and Complex Networks Across Domains
-subtitle: GraphXD Workshop 2018
+subtitle: GraphXD Workshop 2018 \newline
+  Berkeley Institute for Data Science (BIDS)
 author: Jarrod Millman \newline
-  \small Graduate Student, Biostatistics \newline
-  \small Fellow, Berkeley Institute for Data Science
+  \small Division of Biostatistics \newline
+  \small University of California, Berkeley
 date: \small March 27, 2018
 header-includes:
     - \usepackage{amsthm}
@@ -16,40 +17,199 @@ header-includes:
     - \newcommand{\N}[2]{\mathcal{N}\left(#1,#2\right)}
     - \usefonttheme{professionalfonts}
     - \usepackage{fontspec}
+    - \setmainfont{Fira Sans}
     - \setsansfont[BoldFont = {Fira Sans Medium}]{Fira Sans}
     - \setmonofont{Fira Mono}
 ---
 
-# What is a graph?
 
-A graph (or network) is a set of **vertices** connected by **edges**.
+---
+
+\centering {\huge What is a graph?}
+
+
+# A set of **vertices** connected by **edges**
 
 \begin{center}
 \includegraphics[width=.4\textwidth]{figs/graph.png}
 \end{center}
 
-Formally, the graph $G$ is an ordered pair $(V, E)$ where
+Formally, the graph \boldmath$G$ is an ordered pair \boldmath$(V, E)$ where
 
-- $V = \{1, 2, 3, 4, 5\}$
-- $E = \{\{1, 2\}, \{1, 3\}, \{1, 5\}, \{2, 3\}, \{3, 4\}, \{4, 5\}\}$
+| \boldmath$\quad V = \{1, 2, 3, 4, 5\}$
+| \boldmath$\quad E = \{\{1, 2\}, \{1, 3\}, \{1, 5\}, \{2, 3\}, \{3, 4\}, \{4, 5\}\}$
 
-# Nodal data
+---
+
+\centering {\huge Matrix perspective}
+
+
+# Adjacency matrix
+
+\vspace{-1cm}
+\hfill \includegraphics[width=.25\textwidth]{figs/graph.png}
+\large
+\boldmath
+\begin{align*}
+A_G &=
+\begin{bmatrix}
+0 & 1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0
+\end{bmatrix}
+\end{align*}
+
+\vfill
+
+| \boldmath$\quad V = \{1, 2, 3, 4, 5\}$
+| \boldmath$\quad E = \{\{1, 2\}, \{1, 3\}, \{1, 5\}, \{2, 3\}, \{3, 4\}, \{4, 5\}\}$
+
+# Laplacian $=$ Degree $-$ Adjacency
+
+\vspace{-1cm}
+\hfill \includegraphics[width=.25\textwidth]{figs/graph.png}
+\large
+\boldmath
+\begin{align*}
+L_G &=
+\begin{bmatrix}
+3 & 0 & 0 & 0 & 0 \\
+0 & 2 & 0 & 0 & 0 \\
+0 & 0 & 3 & 0 & 0 \\
+0 & 0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 0 & 2
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 & 1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0
+\end{bmatrix}
+\end{align*}
+
+\vfill
+
+| \boldmath$\quad V = \{1, 2, 3, 4, 5\}$
+| \boldmath$\quad E = \{\{1, 2\}, \{1, 3\}, \{1, 5\}, \{2, 3\}, \{3, 4\}, \{4, 5\}\}$
+
+---
+
+\centering {\huge Linear Algebra}
+
+
+# Spectral Theorem for Symmetric Matrices
+
+\begin{definition}
+A scalar \boldmath$\lambda$ is called an \textbf{eigenvalue} of a square matrix $A$ 
+and a vector \boldmath$v$ its associated \textbf{eigenvector} if \boldmath$Av = \lambda v$.
+\end{definition}
+
+\begin{theorem}
+Let \boldmath$A$ be a symmetric \boldmath$n \times n$ matrix with real-valued entries,
+then there are \boldmath$n$ (not necessarily distinct) real eigenvalues
+\boldmath\begin{align*}
+\lambda_1 \le \lambda_2 \le \dots \le \lambda_n \tag{spectrum}
+\end{align*}
+and \boldmath$n$ orthonormal real vectors
+\boldmath$$
+v_1, v_2, \dots, v_n
+$$
+such that $v_i$ is an eigenvector of \boldmath$\lambda_i$.
+\end{theorem}
+
+
+---
+
+\centering {\huge Where do graphs come from?}
+
+
+# Graphs from data
+
+\begin{columns}
+\column[t]{.5\textwidth}
+Vertices
+
+\begin{itemize}
+\item People
+\item Animals
+\item Genes
+\item Proteins
+\item Brain regions
+\item Cities
+\item Ports
+\item Ancestors
+\item Random variables
+\item Etc.
+\end{itemize}
+
+
+\column[t]{.5\textwidth}
+Edges
+
+\begin{itemize}
+\item Interactions
+\item Cooccurrence
+\item Similarity
+\item Correlation
+\item Conditional independence
+\item Causality
+\end{itemize}
+
+\end{columns}
+
+---
+
+\centering {\huge Example}
+
+# Pre-workshop Questionnaire
+
+- Vertices (survey respondents)
+    - Attributes
+    
+        - What best describes you?
+        - How often do you?
+        - I work in ...
+
+- Edges
+
+    - Observe
+
+        - Collaborate / Communicate / Familiar with their work / Don't know them
+        - Use their software / data / algorithms
+
+    - Infer
+
+
+---
+
+\centering {\huge Vertices}
+
+
+# What best describes you?
 
 \begin{center}
 \includegraphics[width=1\textwidth]{figs/describes_you.png}
 \end{center}
 
-# Nodal data
+# How often do you?
 
 \begin{center}
 \includegraphics[width=1\textwidth]{figs/how_often.png}
 \end{center}
 
-# Nodal data
+# I work in ...
 
 \begin{center}
 \includegraphics[width=1\textwidth]{figs/work_in.png}
 \end{center}
+
+---
+
+\centering {\huge Edges}
 
 # Adjacency matrices
 
@@ -57,15 +217,106 @@ Formally, the graph $G$ is an ordered pair $(V, E)$ where
 \includegraphics[width=1\textwidth]{figs/adjacency.png}
 \end{center}
 
+# Adjacency matrices
 
-# Looking ahead
+\begin{center}
+\includegraphics[width=1\textwidth]{figs/adjacency1.png}
+\end{center}
 
-- Invited talks
+# Collaborate ($n = 23, m = 31$)
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{figs/collaborate.png}
+\end{center}
+
+| Average degree:   2.6957
+| Density: 0.1225296442687747
+| Degrees: [8, 8, 7, 7, 7, 5, 4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+
+# Familiar with their work ($n = 23, m = 60$)
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{figs/familiar.png}
+\end{center}
+
+| Average degree:   5.2174
+| Density: 0.23715415019762845
+| Degrees: [15, 11, 11, 9, 8, 7, 7, 7, 7, 6, 6, 5, 4, 3, 3, 3, 3, 2, 1, 1, 1, 0, 0]
+
+# Personally communicate ($n = 23, m = 61$)
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{figs/communicate.png}
+\end{center}
+
+| Average degree:   5.3043
+| Density: 0.24110671936758893
+| Degrees: [16, 11, 10, 10, 9, 9, 8, 8, 6, 6, 5, 5, 4, 3, 2, 2, 2, 2, 1, 1, 1, 1, 0]
+
+# Don't know them ($n = 23, m = 190$)
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{figs/dontknow.png}
+\end{center}
+
+| Average degree:  16.5217
+| Density: 0.7509881422924901
+| [22, 21, 21, 21, 21, 20, 20, 20, 19, 19, 18, 17, 16, 15, 14, 14, 14, 13, 13, 13, 11, 10, 8]
+
+---
+
+\centering {\huge Inferring edges}
+
+
+# Thresholded correlation
+
+\begin{center}
+\includegraphics[width=\textwidth]{figs/infer_edge1.png}
+\end{center}
+
+---
+
+\centering {\huge How did we do?}
+
+# Actual
+
+\begin{center}
+\includegraphics[height=.8\textheight]{figs/true_graph.png}
+\end{center}
+
+
+# Inferred
+
+\begin{center}
+\includegraphics[height=.8\textheight]{figs/inferred_graph.png}
+\end{center}
+
+
+# Plan
+
+- Talks
+- Food
 - Discussion
-- Draft proposal / vision
-- Coding sprints
-- Blog posts
+- Self-organized activities
+    - Communication (e.g., proposals, whitepapers, blog posts)
+    - Technical (e.g., coding sprints, tutorials, data analysis)
+- Reflection
+
+# Thanks
+
+- Aaron Schild 
+- Stéfan van der Walt
+- Nelle Varoquaux 
+- Jessica Zosa Forde
+- Stacey Dorton
 
 ---
 
 \centering {\huge Discussion}
+
+# Histogram
+
+\begin{center}
+\includegraphics[height=.8\textheight]{figs/hi.png}
+\end{center}
+
