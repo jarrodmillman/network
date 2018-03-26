@@ -1,4 +1,0 @@
-savefig.dpi : 600
-savefig.bbox: tight
-lines.linewidth : 3
-text.usetex : true

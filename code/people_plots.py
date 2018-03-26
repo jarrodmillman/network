@@ -104,11 +104,29 @@ for k, v in activities.items():
         'Sometime': sum(s == 'Sometime'),
         'Often': sum(s == 'Often')})
 
-how_often.plot.barh(rot=0, figsize=(12, 8)) #, fontsize="small")
+fig, ax = plt.subplots(figsize=(12, 8), tight_layout=True)
+ylabels = how_often.index
+nbars = how_often.shape[1]
+y_data = np.arange(how_often.shape[0])
+width = 0.8 / nbars
+xshift = 0
+for bar in how_often.columns:
+    ax.barh(-(np.arange(len(ylabels)) + xshift), how_often[bar], label=bar,
+            height=width, align="edge")
+    xshift += width
+ax.legend()
+ax.spines["right"].set_linewidth(0)
+ax.spines["top"].set_linewidth(0)
+ax.set_yticks(-(np.arange(len(ylabels)) + width))
+ax.set_yticklabels(ylabels, fontweight="bold")
+xticks = np.arange(0, max(how_often.max()), 4)
+ax.set_xticks(xticks)
+ax.set_xticklabels(xticks, fontweight="bold")
+
 #plt.gca().invert_yaxis()
 if sys.argv[-1] == '-w':
     plt.savefig('../slides/figs/how_often.png')
     plt.close()
 else:
-    plt.title('How often do you?')
+    plt.title('How often do you?', fontweight="bold")
     plt.show()
