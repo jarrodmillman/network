@@ -1,7 +1,9 @@
 import numpy as np
-from scipy import linalg
 import pandas as pd
 import networkx as nx
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+import seaborn as sns
 
 from utils import node_options, edge_options
 
@@ -15,10 +17,6 @@ gram = true_corr.dot(true_corr.T)
 prng = np.random.RandomState(1)
 X = prng.multivariate_normal(mean, gram, size=n_samples)
 corr = np.corrcoef(X.T)
-
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-import seaborn as sns
 
 fig = plt.figure()
 gs = gridspec.GridSpec(2, 3)
@@ -67,8 +65,8 @@ plt.savefig('../slides/figs/inferred_graph.png')
 
 plt.clf()
 plt.close()
-plt.hist(np.ravel(corr), bins=20)
-plt.savefig('../slides/figs/hi.png')
+plt.hist(np.ravel(corr), bins=30)
+plt.savefig('../slides/figs/hist.png')
 
 plt.clf()
 plt.close()

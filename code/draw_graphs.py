@@ -1,5 +1,3 @@
-import sys
-
 import matplotlib.pyplot as plt
 import networkx as nx
 from utils import load, node_options, edge_options

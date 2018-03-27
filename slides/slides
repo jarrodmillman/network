@@ -169,8 +169,7 @@ Edges
 - Vertices (25 respondents out of 30)
     - Attributes
     
-        - What best describes you?
-        - I work in ...
+        - Who are we?
         - How often do you?
 
 - Edges
@@ -208,7 +207,7 @@ Edges
 # Adjacency matrices (respondent $\times$ participant)
 
 \begin{center}
-\includegraphics[width=1\textwidth]{figs/adjacency1.png}
+\includegraphics[width=1\textwidth]{figs/adjacency.png}
 \end{center}
 
 # Collaborate ($n = 25, m = 33$)
@@ -282,8 +281,9 @@ Edges
 - Food
 - Discussion
 - Self-organized activities
-    - Communication (e.g., proposals, whitepapers, blog posts)
+    - Scientific / research
     - Technical (e.g., coding sprints, tutorials, data analysis)
+    - Communication (e.g., proposals, whitepapers, blog posts)
 - Reflection
 
 # Thanks
@@ -299,9 +299,9 @@ Edges
 
 \centering {\huge Discussion}
 
-# Histogram
+# Histogram of correlation coefficients
 
 \begin{center}
-\includegraphics[height=.8\textheight]{figs/hi.png}
+\includegraphics[height=.8\textheight]{figs/hist.png}
 \end{center}
 

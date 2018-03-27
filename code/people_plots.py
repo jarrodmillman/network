@@ -1,4 +1,3 @@
-import sys
 from collections import OrderedDict
 
 import pandas as pd
@@ -21,7 +20,7 @@ ax.bar(np.arange(len(data)), data, color="0")
 xlabels = data.index
 x_data, y_data = np.arange(len(data)), data
 
-ax.bar(x_data, y_data, align='center', color="0")
+ax.bar(x_data, y_data, align='center', color='royalblue')
 ax.set_xticks(np.arange(len(xlabels)))
 ax.set_xticklabels(
     xlabels,
@@ -57,9 +56,8 @@ for response in df[question]:
         if field in response:
             D[field] += 1
 
-#plt.rc('text', usetex=True)
 x_data, y_data = np.arange(len(D)), list(D.values())
-ax.bar(x_data, y_data, align='center', color="0")
+ax.bar(x_data, y_data, align='center', color='royalblue')
 xlabels = [k.replace(' ', '\n') for k in D.keys()]
 ax.set_xticks(np.arange(len(xlabels)))
 ax.set_xticklabels(
@@ -77,12 +75,10 @@ ax.spines["top"].set_linewidth(0)
 ax.spines["left"].set_linewidth(0)
 ax.set_ylim(0, max(y_data) + 2)
 
-if sys.argv[-1] == '-w':
-    plt.savefig('../slides/figs/work_in.png')
-    plt.close()
-else:
-    plt.title("I work in…", fontweight="bold")
-    plt.show()
+plt.title("I work in ...")
+plt.savefig('../slides/figs/work_in.png')
+plt.clf()
+plt.close()
 
 
 # How often do you?
@@ -123,10 +119,5 @@ xticks = np.arange(0, max(how_often.max()), 4)
 ax.set_xticks(xticks)
 ax.set_xticklabels(xticks, fontweight="bold")
 
-#plt.gca().invert_yaxis()
-if sys.argv[-1] == '-w':
-    plt.savefig('../slides/figs/how_often.png')
-    plt.close()
-else:
-    plt.title('How often do you?', fontweight="bold")
-    plt.show()
+#plt.title('How often do you?', fontweight="bold")
+plt.savefig('../slides/figs/how_often.png')

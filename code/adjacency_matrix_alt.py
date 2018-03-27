@@ -1,6 +1,4 @@
-import sys
 import numpy as np
-import math
 import matplotlib.pyplot as plt
 import seaborn as sns
 import networkx as nx
@@ -8,9 +6,6 @@ from utils import load
 
 # load the graph
 adjacencies, fields, people = load()
-N = len(people)
-
-import matplotlib.pyplot as plt
 
 fields = np.delete(fields, 3)
 adjacencies = np.delete(adjacencies, 3, 2)
@@ -23,4 +18,4 @@ for f, field in enumerate(fields):
     axes[f].axis('off')
 
 
-plt.savefig('../slides/figs/adjacency1.png')
+plt.savefig('../slides/figs/adjacency.png')
