@@ -1,5 +1,8 @@
 import sys
+from matplotlib import rc
+
 from collections import OrderedDict
+rc('text', usetex=False)
 
 import pandas as pd
 import numpy as np
@@ -13,7 +16,7 @@ question = 'What best describes you?'
 df[question][17] = 'Other'  # I am a frankenstein of appointments.
 
 fig, axes = plt.subplots(figsize=(12, 6), nrows=2, tight_layout=True,
-    gridspec_kw={"hspace": 0.4})
+                         gridspec_kw={"hspace": 0.4})
 ax = axes[0]
 
 data = df[question].value_counts()
@@ -24,20 +27,21 @@ x_data, y_data = np.arange(len(data)), data
 ax.bar(x_data, y_data, align='center', color="0")
 ax.set_xticks(np.arange(len(xlabels)))
 ax.set_xticklabels(
-    xlabels,
+    [r"%s" % l for l in xlabels],
     fontweight="bold")
 ax.set_ylim(0, max(y_data) + 2)
 
 ax.set_yticks([])
 for x, y in zip(x_data, y_data):
-    ax.text(x, y-0.95, '%d' % y, ha='center', va= 'bottom', fontweight="bold",
+    ax.text(x, y-0.95, r'%d' % y, ha='center',
+            va= 'bottom', fontweight="bold",
             color="1")
 
 # hacky way of putting less tick labels
 ax.spines["right"].set_linewidth(0)
 ax.spines["top"].set_linewidth(0)
 ax.spines["left"].set_linewidth(0)
-ax.set_title("What best describes you?", fontweight="bold")
+ax.set_title(r"What best describes you?", fontweight="bold")
 
 ax = axes[1]
 # I do work in (check all that apply):
@@ -63,12 +67,12 @@ ax.bar(x_data, y_data, align='center', color="0")
 xlabels = [k.replace(' ', '\n') for k in D.keys()]
 ax.set_xticks(np.arange(len(xlabels)))
 ax.set_xticklabels(
-    xlabels, #fontsize="small",
+    [r"%s" % l for l in xlabels],
     fontweight="bold")
 
 ax.set_yticks([])
 for x, y in zip(x_data, y_data):
-    ax.text(x, y-1.15, '%d' % y, ha='center', va= 'bottom', fontweight="bold",
+    ax.text(x, y-1.15, r'%d' % y, ha='center', va= 'bottom', fontweight="bold",
             color="1")
 
 # hacky way of putting less tick labels
@@ -76,12 +80,12 @@ ax.spines["right"].set_linewidth(0)
 ax.spines["top"].set_linewidth(0)
 ax.spines["left"].set_linewidth(0)
 ax.set_ylim(0, max(y_data) + 2)
+ax.set_title(r"I do work in...", fontweight="bold")
 
 if sys.argv[-1] == '-w':
     plt.savefig('../slides/figs/work_in.png')
     plt.close()
 else:
-    plt.title("I work in…", fontweight="bold")
     plt.show()
 
 
@@ -89,10 +93,10 @@ else:
 # will also want to add node information to graphs...
 activities = {'Collect data': 'How often do you: [Collect data]',
               'Analyze data': 'How often do you: [Analyze data]',
-              'Design methods \n and algorithms': 'How often do you: [Design methods and algorithms]',
+              'Design methods\nand algorithms': 'How often do you: [Design methods and algorithms]',
               'Implement algorithms': 'How often do you: [Implement algorithms]',
               'Write scripts': 'How often do you: [Write scripts]',
-              'Write software \n packages': 'How often do you: [Write software packages]'}
+              'Write software\npackages': 'How often do you: [Write software packages]'}
 freq = ['Never', 'Seldom', 'Sometime', 'Often']
 how_often = pd.DataFrame(columns=freq, index=activities)
 
@@ -118,15 +122,16 @@ ax.legend()
 ax.spines["right"].set_linewidth(0)
 ax.spines["top"].set_linewidth(0)
 ax.set_yticks(-(np.arange(len(ylabels)) + width))
-ax.set_yticklabels(ylabels, fontweight="bold")
+ax.set_yticklabels(
+    [r"%s" % x for x in ylabels], fontweight="bold")
 xticks = np.arange(0, max(how_often.max()), 4)
 ax.set_xticks(xticks)
-ax.set_xticklabels(xticks, fontweight="bold")
-
+ax.set_xticklabels([r"%s" % x for x in xticks],
+                   fontweight="bold")
+ax.set_title(r'How often do you?', fontweight="bold")
 #plt.gca().invert_yaxis()
 if sys.argv[-1] == '-w':
     plt.savefig('../slides/figs/how_often.png')
     plt.close()
 else:
-    plt.title('How often do you?', fontweight="bold")
     plt.show()
