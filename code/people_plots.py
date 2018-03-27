@@ -64,7 +64,7 @@ for response in df[question]:
 #plt.rc('text', usetex=True)
 x_data, y_data = np.arange(len(D)), list(D.values())
 ax.bar(x_data, y_data, align='center', color="0")
-xlabels = [k.replace(' ', r'\n') for k in D.keys()]
+xlabels = [k.replace(' ', '\n') for k in D.keys()]
 ax.set_xticks(np.arange(len(xlabels)))
 ax.set_xticklabels(
     [r"%s" % l for l in xlabels],
